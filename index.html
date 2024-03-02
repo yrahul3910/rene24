@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="https://conf.researchr.org/favicon.ico?28d37e6d7e5e12d24c39bdba0f4f3cfd" rel="shortcut icon" type="image/x-icon" />
+	<link href="https://conf.researchr.org/stylesheets/common_.css?d7bcca3579a066193caf560ede9d6399" rel="stylesheet" type="text/css" />
+	<title>ASE 2024 - Replications and Negative Results (RENE) - ASE 2024</title>
+	<script type="text/javascript">var show_webdsl_debug=false;</script>
+	<script type="text/javascript">var contextpath="https://conf.researchr.org";</script>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="https://conf.researchr.org/stylesheets/conf.css?e96790a641dfff25d51f7d269119daa7" type="text/css" />
+	<link rel="stylesheet" href="https://conf.researchr.org/stylesheets/logobar.css?d68c282160782c2b5f5bfb8ceb47a30e" type="text/css" />
+	<link rel="stylesheet" href="https://conf.researchr.org/stylesheets/flatpickr-4.3.2.min.css?8eedb7a0f2455c0dbbbbcc46c4172c0d" type="text/css" />
+	<link rel="stylesheet" href="boostrap-theme.min.css" type="text/css" />
+	<script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="https://conf.researchr.org/javascript/faceted-filtering.js?b66007ca48ecd1d87e1cdd60e4e42366"></script>
+	<script type="text/javascript" src="https://conf.researchr.org/javascript/flatpickr-4.3.2.min.js?c2885c17ae5fd471c9a40c437e8a2736"></script>
+	<script type="text/javascript" src="https://conf.researchr.org/javascript/jquery.tablesorter.combined.min.js?285b21976326641f8f1b910492e6d5d0"></script>
+	<script type="text/javascript" src="https://conf.researchr.org/javascript/jquery.tablesorter.pager.min.js?4551cdfea66f45a11ae5548f3d50a06f"></script>
+	<script type="text/javascript" src="https://conf.researchr.org/javascript/tablesorter-init.js?ee6babedf1a6be960e4543a1bb57b421"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://conf.researchr.org/javascript/notify.min.js?e86d399917a84b69a4683f504c7a7813"></script>
+	<script type="text/javascript" src="https://conf.researchr.org/javascript/ajax.js?a40d577d9afd4a1b5dc6ea43cd74db43"></script>
+	<script type="text/javascript">(function($){
+		$(document).ready(function(){
+			$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+				event.preventDefault(); 
+				event.stopPropagation(); 
+				$(this).parent().siblings().removeClass('open');
+				$(this).parent().toggleClass('open');
+			});
+		});
+	})(jQuery);
+</script>
+<script type="text/javascript"> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>
+<script type="text/javascript">(function(){
+	var post_process_function = function(n){ var node=(n&&n.nodeType === 1)?n:document; $(node).find('.modal').on( 'shown.bs.modal', function(){ if(history.pushState){ history.pushState({ id: 'modal', modalId: $(this).attr('id') }, null, window.location.href); } } ).on( 'hidden.bs.modal', function (){ if( history.state != null && history.state.modalId == $(this).attr('id') ){ history.back(); } } ); };
+	var original_post_process_func = ajax_post_process;
+	ajax_post_process = function(){
+		original_post_process_func.apply(this,arguments);
+		post_process_function.apply(this,arguments);
+	};
+	$(document).ready( post_process_function );
+})();   
+</script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-4G0QWEKVQS', {'cookie_domain': 'auto', 'anonymizeIp': true });gtag('config', 'UA-9607501-2', {'cookie_domain': 'auto', 'anonymizeIp': true });</script>
+<script type="text/javascript">var ignoreHashChange = false;
+	function hashChangeFunc(){
+		// show active tab on hash in url
+		if (window.location.hash !== ''){
+			var hashTargetAll = $('a[href="' + window.location.hash + '"]');
+			if(hashTargetAll.length){
+				var hashTarget = hashTargetAll.filter('[data-toggle="tab"]')
+				if( hashTarget.length ){
+					hashTarget = hashTarget.first();
+					hashTarget.tab('show');
+				} else {
+					hashTarget = hashTargetAll.first();
+				}
+				// and open parent tabs in case the target element is nested in a tab
+				var parentPane = hashTarget.closest( '.tab-pane' );
+				if(parentPane.length){
+					$('.nav a[href="#'+ parentPane.attr('id') +'"]').tab('show');
+				}
+				var parentCollapse = hashTarget.closest( '.panel-collapse:not(.in)' ).collapse('show');
+			}
+		}
+		return false;
+	}
+	
+	$(document).ready(function(){
+		var tabFromRequestUrl = window.location.hash !== '' ? $('a[href="' + window.location.hash + '"][data-toggle="tab"]') : [];
+		var initUrlHash = window.location.hash;
+		hashChangeFunc()
+		if( tabFromRequestUrl.length ){
+			//Prevent the browser to auto-scroll to the anchor of the tab
+			window.location.hash = "";
+		}
+		//make in-page #links open the tabs
+		if ($._data( $(window)[0], 'events' ).hashchange == undefined){
+			$(window).on('hashchange', hashChangeFunc);
+		}
+		if(tabFromRequestUrl.length){
+			setTimeout( function(){
+				ignoreHashChange = true;
+				history.replaceState(null, null, initUrlHash);
+				ignoreHashChange = false;
+			}, 10 );
+		}
+	});
+	var autoTabFunction = function(node){
+		// remember the hash in the URL without jumping
+		$('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e){
+			var newhash = '#' + $(e.target).attr('href').substr(1);
+			if(history.replaceState){
+				history.replaceState(null, null, newhash);
+			} else{
+				location.hash = newhash;
+			}
+		});
+		
+		//When no tab is active, set the first one to active
+		$(node).find('.nav-tabs:not(.bound), .nav-pills:not(.bound)').addClass('bound').each(function(){
+			if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
+				$(this).children().first().addClass('active');
+			}
+		});
+		$(node).find('.tab-content:not(.bound)').addClass('bound').each(function(){
+			if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
+				$(this).children('.tab-pane').first().addClass('active');
+			}
+		});
+	}
+</script>
+<script type="text/javascript">(function(){
+	var post_process_function = function(n){ var node=(n&&n.nodeType === 1)?n:document; $(node).find('input.flatpickr:not([id])').focusout( function(){ this.dispatchEvent( new KeyboardEvent('keydown',{keyCode:13, bubbles: true}) ); } ); };
+	var original_post_process_func = ajax_post_process;
+	ajax_post_process = function(){
+		original_post_process_func.apply(this,arguments);
+		post_process_function.apply(this,arguments);
+	};
+	$(document).ready( post_process_function );
+})();   
+</script>
+<script type="text/javascript">function addEventModalLoadOnClick( containerNode ){
+	$(containerNode).find( "a[data-event-modal]" ).on("click", function(e){
+		var eventId = $(this).data("event-modal"); 
+		var modalElem = $("#modal-" + eventId);
+		if(modalElem.length){
+			modalElem.modal({ backdrop: 'static', keyboard: true}, 'show');
+		} else {
+			var loaderElem = $("#event-modal-loader");
+			loaderElem.find("input.event-id-input").val( eventId );
+			loaderElem.find("#load-modal-action").click();
+		}
+		e.preventDefault();
+	} );
+}
+</script>
+<script type="text/javascript">function addStarredEventOnClick( containerNode ){
+	$(containerNode).find( "[data-event-star]" ).on("click", function(e){
+		var eventId = $(this).data("event-star"); 
+		var starEventFormElem = $("#event-star-form");
+		starEventFormElem.find("input.event-id-input").val( eventId );
+		starEventFormElem.find("#star-event-action").click();
+		e.preventDefault();
+		e.stopPropagation();
+	} );
+}
+</script>
+<script type="text/javascript">function pauseOnCloseModal( modalid ){
+	//pauses video (only youtube at the moment) when closing modal
+	$('#' + modalid).on('hidden.bs.modal', function () {
+		$(this).find('.embed-container iframe[src*=enablejsapi]').each( function(){ this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*') } );
+	} )
+}
+</script>
+<script type="text/javascript">$(document).ready( function(){
+	$('#program-menu a[data-fltr-type]').on('click', function(event){
+		event.preventDefault();
+		window.location = $(this).attr('href') + "?" + encodeURIComponent( $(this).data('fltr-type') ) + '=' + encodeURIComponent( $(this).data('fltr-val') );
+	})
+})
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4G0QWEKVQS"></script>
+<!--[if IE 9]>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20171210/classList.min.js"></script>
+	<![endif]-->
+</head>
+<body id="track">
+	<div class="frame">
+		<div class="logobar">
+			<div class="container">
+				<a href="https://conf.researchr.org/home/ase-2024" class="navbar-brand navigate">
+					<span class="brand-text">ASE 2024</span>
+				</a>
+				<div class="place">Sun 27 October - Fri 1 November 2024 
+					<a href="https://conf.researchr.org/venue/ase-2024/ase-2024-venue" class="navigate">Sacramento, California, United States</a>
+				</div>
+			</div>
+		</div>
+		<div class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" data-toggle="collapse" data-target="#navigationbar" class="navbar-toggle">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div id="navigationbar" class="navigationbar collapse navbar-collapse">
+					<ul class="block nav navbar-nav">
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle">Attending 
+								<span class="caret"></span>
+							</a>
+							<ul class="block dropdown-menu">
+								<li class="block">
+									<a href="https://conf.researchr.org/venue/ase-2024/ase-2024-venue" class="navigate">Venue: Sheraton Grand, Sacramento, California</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/attending/ase-2024/accommodation" class="navigate">Accommodations</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/attending/ase-2024/diversity_inclusion" class="navigate">Diversity and Inclusion Plan</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/attending/ase-2024/code_of_conduct" class="navigate">Code of Conduct</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/attending/ase-2024/travel-support" class="navigate">Travel Support</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/attending/ase-2024/social-events" class="navigate">Social Events</a>
+								</li>
+							</ul>
+						</li>
+						<li class="block">
+							<a href="https://conf.researchr.org/info/ase-2024/sponsorship" class="navigate">Sponsorship</a>
+						</li>
+						<li id="tracks-in-navbar" class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle">Tracks 
+								<span class="caret"></span>
+							</a>
+							<ul class="block dropdown-menu multi-column columns-1">
+								<div class="row">
+									<div class="col-sm-12">
+										<ul class="block multi-column-dropdown">
+											<li class="block dropdown-header">ASE 2024</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-research" class="navigate">Research Papers</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-industry-showcase" class="navigate">Industry Showcase</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-journal-first-papers" class="navigate">Journal-first Papers</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-artifact-evaluation-track" class="navigate">Artifact Evaluation Track</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-tool-demonstrations" class="navigate">Tool Demonstrations</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-nier-track" class="navigate">NIER Track</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-student-research-competition-" class="navigate">Student Research Competition </a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-most-influential-papers--mip-" class="navigate">Most Influential Papers (MIP)</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-doctoral-symposium" class="navigate">Doctoral Symposium</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-new-faculty-symposium" class="navigate">New Faculty Symposium</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-tutorials" class="navigate">Tutorials</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-workshops" class="navigate">Workshops</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/track/ase-2024/ase-2024-keynotes" class="navigate">Keynotes</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle">Organization 
+								<span class="caret"></span>
+							</a>
+							<ul class="block dropdown-menu multi-column columns-1">
+								<div class="row">
+									<div class="col-sm-12">
+										<ul class="block multi-column-dropdown">
+											<li class="block dropdown-header">ASE 2024 Committees</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-organizing-committee" class="navigate">Organizing Committee</a>
+											</li>
+											<li class="block dropdown-header">Track Committees  </li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-papers-program-committee" class="navigate">
+													<strong>Research Papers</strong>
+												</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-industry-showcase-program-committee" class="navigate">
+													<strong>Industry Showcase</strong>
+												</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-journal-first-papers-program-committee" class="navigate">
+													<strong>Journal-first Papers</strong>
+												</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-artifact-evaluation-track-fatemeh-" class="navigate">
+													<strong>Artifact Evaluation Track</strong>
+												</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-tool-demonstrations-program-committee" class="navigate">
+													<strong>Tool Demonstrations</strong>
+												</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-nier-track-program-committee" class="navigate">
+													<strong>NIER Track</strong>
+												</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-student-research-competition--program-committee" class="navigate">
+													<strong>Student Research Competition </strong>
+												</a>
+											</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/committee/ase-2024/ase-2024-workshops-workshop-chairs" class="navigate">
+													<strong>Workshops</strong>
+												</a>
+											</li>
+											<li class="block dropdown-header">Contributors</li>
+											<li class="block">
+												<a href="https://conf.researchr.org/people-index/ase-2024" class="navigate">
+													<span class="glyphicon glyphicon-search"></span>
+													<sup>
+														<span class="glyphicon glyphicon-user"></span>
+													</sup> People Index
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</ul>
+						</li>
+						<li class="block">
+							<a href="https://conf.researchr.org/search/ase-2024//all" class="navigate">
+								<span class="glyphicon glyphicon-search"></span>
+								<span class="hidden-sm"> Search</span>
+							</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+								<span class="hidden-sm">Series 
+									<span class="caret"></span>
+								</span>
+								<span title="Series" class="visible-sm">
+									<span class="glyphicon glyphicon-repeat"></span>
+									<span class="caret"></span>
+								</span>
+							</a>
+							<ul class="block dropdown-menu">
+								<li class="block">
+									<a href="https://conf.researchr.org/series/ase" class="navigate">
+										<span class="glyphicon glyphicon-home"></span> Series
+									</a>
+								</li>
+								<li class="block divider"></li>
+								<li class="block">
+									<span class="text-muted" style="margin-left: 2px;">
+										<span class="glyphicon glyphicon-hand-right"></span> ASE 2024
+									</span>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/home/ase-2023" class="navigate">ASE 2023</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/home/ase-2022" class="navigate">ASE 2022</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/home/ase-2021" class="navigate">ASE 2021</a>
+								</li>
+								<li class="block">
+									<a href="https://conf.researchr.org/home/ase-2020" class="navigate">ASE 2020</a>
+								</li>
+								<li class="block">
+									<a href="https://2019.ase-conferences.org" class="navigate">ASE 2019</a>
+								</li>
+								<li class="block">
+									<a href="http://ase-conferences.org/ase/past/index.html" target="_blank" class="navigate">Past Editions 
+										<span class="pull-right">
+											<span class="glyphicon glyphicon-new-window"></span>
+										</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="navbar-right">
+						<ul class="block nav navbar-nav">
+							<li class="block">
+								<a href="https://conf.researchr.org/signin/ase-2024/https%3A%5Es%5Esconf.researchr.org%5Estrack%5Esase-2024%5Esase-2024-workshops" rel="nofollow" class="navigate">Sign in</a>
+							</li>
+							<li class="block">
+								<a href="https://conf.researchr.org/signup/ase-2024" class="navigate">Sign up</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="container">
+			<div class="page-header">
+				<span class="text-muted small">
+					<span class="glyphicon glyphicon-home"></span>
+					<a href="https://conf.researchr.org/home/ase-2024" class="navigate">ASE 2024</a> (
+					<a href="https://conf.researchr.org/series/ase" class="navigate">series</a>) / 
+				</span>
+				<span class="text-muted small">
+					<span class="glyphicon glyphicon-home"></span>
+					<a href="https://conf.researchr.org/home/ase-2024" class="navigate">ASE 2024</a> (
+					<a href="https://conf.researchr.org/series/ase" class="navigate">series</a>) / 
+				</span>
+				<h1>Replications and Negative Results (RENE)
+					<span class="pull-right small h1">ASE 2024</span>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-sm-8">
+					<ul id="tab" class="nav nav-pills">
+						<li>
+							<a href="#program" data-toggle="tab">Program</a>
+						</li>
+						<li>
+							<a href="#event-overview" data-toggle="tab">Accepted Papers</a>
+						</li>
+						<li>
+							<a href="#Call-for-Papers" data-toggle="tab">Call for Papers</a>
+						</li>
+					</ul>
+					<script type="text/javascript">(function(){
+						var post_process_function = function(n){ var node=(n&&n.nodeType === 1)?n:document; autoTabFunction(node); };
+						var original_post_process_func = ajax_post_process;
+						ajax_post_process = function(){
+							original_post_process_func.apply(this,arguments);
+							post_process_function.apply(this,arguments);
+						};
+						$(document).ready( post_process_function );
+					})();   
+				</script>
+				<div class="tab-content">
+					<div id="program" class="tab-pane ">
+						<div class="faceted-filtering">
+							
+							<div tabindex="-1" id="hidden-modal" class="modal">
+								<div class="modal-dialog ">
+									<div class="modal-content"></div>
+								</div>
+							</div>
+							<h4 class="text-muted program-tentative">
+								<span class="glyphicon glyphicon-info-sign"></span> This program is tentative and subject to change.
+							</h4>
+							
+							<div class="program-container"></div>
+						</div></div>
+						<div id="event-overview" class="tab-pane">
+							<h3>Accepted Papers</h3>
+						</div>
+						
+						<div id="Call-for-Papers" class="tab-pane ">
+							<h2>Call for Papers</h2>
+							<p>
+								<p>The 39th edition of the IEEE/ACM International Conference on Automated Software Engineering (ASE '24) would like to encourage researchers to (1) reproduce results from previous papers and (2) publish studies with important and relevant negative or null results (results which fail to show an effect, yet demonstrate the research paths that did not pay off).</p>
+								<p>We would also like to encourage the publication of the negative results or reproducible aspects of previously published work. For example, authors of a published paper reporting a working solution for a given problem can document in a “negative results paper” other (failed) attempts they made before defining the working solution they published.</p>
+								<ol>
+									<li>
+										<p>
+											<strong>Reproducibility studies.</strong> The papers in this category must go beyond simply re-implementing an algorithm and/or re-running the artifacts provided by the original paper. Such submissions should at least apply the approach on new data sets (open-source or proprietary). A reproducibility study should clearly report on results that the authors were able to reproduce as well as on the aspects of the work that were irreproducible. We encourage reproducibility studies to follow the ACM guidelines on reproducibility (different team, different experimental setup): “The measurement can be obtained with stated precision by a different team, a different measuring system, in a different location on multiple trials. For computational experiments, this means that an independent group can obtain the same result using artifacts which they develop completely independently.”
+										</p>
+									</li>
+									<li>
+										<p>
+											<strong>Negative results papers.</strong> We seek papers that report on negative results. We seek negative results for all types of software engineering research in any empirical area (qualitative, quantitative, case study, experiment, etc.). For example, did your controlled experiment not show an improvement over the baseline? Even if negative, results obtained are still valuable when they are either not obvious or disprove widely accepted wisdom. Similar to the <a href="https://insights-workshop.github.io/">Insights Workshop at NAACL</a>, strong negative results paper would contribute at least one of the following:
+											<ul>
+												<li>Broadly applicable empirical recommendations, especially if X that didn't work is something that many practitioners would think reasonable to try, and if the demonstration of X's failure is accompanied by some explanation/hypothesis;</li>
+												<li>Ablation studies of components in previously proposed models, showing that their contributions are different from what was initially reported (for example, if a paper reported significant improvements as being due to component X, an ablation study that shows the majority of the improvement being due to component Y);</li>
+												<li>Datasets or probing tasks showing that previous approaches do not generalize to other domains or language phenomena;</li>
+												<li>Trivial baselines that work suspiciously well for a given task/dataset;</li>
+												<li>Experiments on (in)stability of the previously published results due to hardware, random initializations, preprocessing pipeline components, etc;</li>
+												<li>demonstration of issues with widely used methodology in the SE literature, such as data collection/preprocessing practices, evaluation metrics (e.g. accuracy, F1), etc. which prevent fair comparison of methods.</li>
+											</ul>
+										</p>
+									</li>
+								</ol>
+								<h2>
+									<a href="#evaluation-criteria" id="evaluation-criteria" class="anchor-link">Evaluation Criteria</a>
+								</h2>
+								<p>Both Reproducibility Studies and Negative Results submissions will be evaluated according to the following standards:</p>
+								<ul>
+									<li>Depth and breadth of the empirical studies</li>
+									<li>Clarity of writing</li>
+									<li>Appropriateness of conclusions</li>
+									<li>Amount of useful, actionable insights</li>
+									<li>Availability of artifacts</li>
+									<li>Underlying methodological rigor. A negative result due primarily to misaligned expectations or due to lack of statistical power (small samples) is not a good submission. The negative result should be a result of a lack of effect, not lack of methodological rigor.</li>
+								</ul>
+								<p>We expect reproducibility studies to clearly point out the artifacts the study is built upon, and to provide the links to all the artifacts in the submission (the only exception will be given to those papers that reproduce the results on proprietary datasets that can not be publicly released).</p>
+								<h2>
+									<a href="#submission-instructions" id="submission-instructions" class="anchor-link">Submission Instructions</a>
+								</h2>
+								<p>Submissions must be original, in the sense that the findings and writing have not been previously published or under consideration elsewhere. However, as either reproducibility studies or negative results, some overlap with previous work is expected. Please make that clear in the paper.</p>
+								<p>Publication format should follow the ASE guidelines. Submissions to the RENE Track can be made via the ASE RENE track submission site (
+									<a href="https://ase2024-rene.hotcrp.com">https://ase2024-rene.hotcrp.com</a>) by the submission deadline.
+								</p>
+								<p>
+									<strong>Length:</strong> There are two formats. (1) Short Papers and Position Papers, which are limited to 3 pages plus references; (2) Long Papers, which are limited to 6 pages plus references.
+								</p>
+								<p>
+									Position papers must have a title beginning with "Position Paper:".
+								</p>
+								<p>
+									<strong>Important note:</strong> the RENE track does not follow a double-anonymous review process.
+								</p>
+								<p>The official publication date is the date the proceedings are made available in the ACM or IEEE Digital Libraries. This date may be up to two weeks prior to the first day of ASE 2024. The official publication date affects the deadline for any patent filings related to published work.</p>
+								<p>Purchases of additional pages in the proceedings is not allowed. Full registration and in-person presentation are required for papers accepted at the conference.</p>
+								<p>As a published ACM author, you and your co-authors are subject to all <a href="https://www.acm.org/publications/policies/toc">ACM Publications Policies</a>, including <a href="https://www.acm.org/publications/policies/research-involving-human-participants-and-subjects">ACM’s new Publications Policy on Research Involving Human Participants and Subjects</a></p>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 sidebar">
+					<div class="panel panel-primary">
+						<div class="panel-heading clearfix">
+							<div class="panel-title">Important Dates
+								<span class="pull-right">
+									<small>
+										<span class="glyphicon glyphicon-globe"></span>
+										<span class="glyphicon glyphicon-time"></span> AoE (UTC-12h)
+									</small>
+								</span>
+							</div>
+						</div>
+						<table class="table table-hover important-dates-in-sidebar">
+							<tr class="clickable-row text-success">
+								<td>Fri 13 Sep 2024
+									<br/>Camera Ready
+								</td>
+							</tr>
+							<tr class="clickable-row text-success">
+								<td>Fri 16 Aug 2024
+									<br/>Paper Notification
+								</td>
+							</tr>
+							<tr class="clickable-row text-success">
+								<td>Fri 2 Aug 2024
+									<br/>Paper Submission
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="panel panel-primary">
+						<div class="panel-heading clearfix">
+							<div class="panel-title">Submission Link</div>
+						</div>
+						<div class="panel-body">
+							<small>
+								<span class="text-muted">
+									<span class="glyphicon glyphicon-new-window"></span>
+								</span>
+								<a href="https://ase2024-rene.hotcrp.com" title="Submission link for Call for Papers" target="_blank" class="navigate">https://ase2024-rene.hotcrp.com</a>
+							</small>
+						</div>
+					</div>
+					<div class="panel panel-primary">
+						<div class="panel-heading clearfix">
+							<div class="panel-title">
+								<a href="https://conf.researchr.org/committee/icpc-2024/icpc-2024-replications-and-negative-results--rene--program-committee" class="navigate">Program Committee</a>
+							</div>
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/rahulyedida" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Rahul Yedida" src="https://conf.researchr.org/getDefaultImage/micro-avatar?1403689231000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Rahul Yedida
+												<span class="pull-right">
+													<small>RENE Track Co-Chair</small>
+												</span>
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">North Carolina State University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>USA</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ase-2024/timmenzies" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Tim Menzies" src="https://conf.researchr.org/getProfileImage/timmenzies/f63bef29-6354-45dd-8450-3547513167a5/micro-avatar.jpg?1500532855000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Tim Menzies
+												<span class="pull-right">
+													<small>RENE Track Co-Chair</small>
+												</span>
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">North Carolina State University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>USA</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/icpc-2024/marcotuliovalente" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Marco Tulio Valente" src="https://conf.researchr.org/getProfileImage/marcotuliovalente/18f990df-1a79-4b11-acb4-6c6d2d0b6527/micro-avatar.jpg?1544661755000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Marco Tulio Valente
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">Federal University of Minas Gerais</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>Brazil</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ase-2024/akondrahman" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Akond Rahman" src="https://conf.researchr.org/getProfileImage/akondrahman/0008b64e-191f-450a-8728-7ff252786517/micro-avatar.jpg?1522940962000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Akond Rahman
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">Auburn University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>USA</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ase-2024/bowenxu1" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Bowen Xu" src="https://conf.researchr.org/getProfileImage/bowenxu1/08d607b9-fc38-483b-ad4d-9c250fafb9a6/micro-avatar.jpg?1689606749000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Bowen Xu
+												<span class="pull-right">
+													<small></small>
+												</span>
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">North Carolina State University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>USA</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/davidetaibi" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Davide Taibi" src="https://conf.researchr.org/getProfileImage/davidetaibi/0162f69b-13f6-4d9a-8843-c0496c983550/micro-avatar.jpg?1536171144000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Davide Taibi
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">University of Oulu and Tampere University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>Finland</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ghizlaneelboussaidi" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Ghizlane El Boussaidi" src="https://conf.researchr.org/getProfileImage/ghizlaneelboussaidi/07c076ce-a1c3-4693-9db3-5841b5128f0d/micro-avatar.jpg?1550071671000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Ghizlane El Boussaidi
+												<span class="pull-right">
+													<small></small>
+												</span>
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">École de Technologie Supérieure</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>Canada</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ase-2024/johngrundy" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="John Grundy" src="https://conf.researchr.org/getProfileImage/johngrundy/4afad890-b12d-4648-9c54-ec1632be3cdd/micro-avatar.jpg?1494111958000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">John Grundy
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">Monash University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>Australia</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ase-2024/chanchalkroy" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Andreea Vescan" src="https://conf.researchr.org/getProfileImage/chanchalkroy/5f1fe912-8145-4212-9554-c504e7256869/micro-avatar.jpg?1596206925000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Chanchal K. Roy
+												<span class="pull-right">
+													<small></small>
+												</span>
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">University of Saskatchewan</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>Canada</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ase-2024/suvodeepmajumder1" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Suvodeep Majumder" src="https://conf.researchr.org/getDefaultImage/micro-avatar?1403689231000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Suvodeep Majumder
+												<span class="pull-right">
+													<small></small>
+												</span>
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">Columbia University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>USA</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="list-group-item">
+								<a href="https://conf.researchr.org/profile/ase-2024/wesleyassuncao" class="navigate">
+									<div class="media">
+										<span class="pull-left">
+											<img alt="Wesley Assunç&tilde;ao" src="https://conf.researchr.org/getProfileImage/wesleyassuncao/c497acd7-b294-46fb-986e-a35f9fac27a1/micro-avatar.jpg?1692863378000" class="outputimage media-object thumbnail no-bottom-margin"/>
+										</span>
+										<div class="media-body">
+											<h5 class="media-heading">Wesley Assunção
+												<span class="pull-right">
+													<small></small>
+												</span>
+											</h5>
+											<h5 class="media-heading">
+												<span class="text-black">North Carolina State University</span>
+											</h5>
+											<h5 class="media-heading">
+												<small>USA</small>
+											</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="messages-placeholder" class="alert alert-warning" style="display:none;">
+				<a data-dismiss="alert" class="close">x</a>
+				<em>Sat 2 Mar 15:23</em>
+			</div>
+		</div>
+		<div id="notifications-ph" class="webdsl-placeholder"></div>
+		<div id="event-modal-loader" class="webdsl-placeholder">
+			<form name="form_131600131708ba20eaf86f8a53e853a2be58218fe9b" id="form_131600131708ba20eaf86f8a53e853a2be58218fe9b" action="https://conf.researchr.org/eventDetailsModalByAjaxConferenceEdition?" accept-charset="UTF-8" method="POST" class="hidden">
+				<input type="hidden" name="form_131600131708ba20eaf86f8a53e853a2be58218fe9b" value="1" />
+				<input type="hidden" name="context" value="icpc-2024" />
+				<input name="26ffb2f69e896b3a1d4a3aafce2a0694" type="text" value="" class="inputString form-control event-id-input"/>
+				<button style="position: absolute; left: -9999px; width: 1px; height: 1px;" onclick='javascript:serverInvoke("https://conf.researchr.org/eventDetailsModalByAjaxConferenceEdition?","eventDetailsModalByAjaxConferenceEdition_ia0_8ba20eaf86f8a53e853a2be58218fe9b", [{"name":"context", "value":"icpc-2024"},],"form_131600131708ba20eaf86f8a53e853a2be58218fe9b", this.nextSibling, false,"event-modal-loader"); return false;'></button>
+				<a submitid="eventDetailsModalByAjaxConferenceEdition_ia0_8ba20eaf86f8a53e853a2be58218fe9b" href="javascript:void(0)" onclick="javascript:loadImageElem=this;$(this.previousSibling).click()" id="load-modal-action"></a>
+			</form>
+		</div>
+		<div id="event-star-form" class="webdsl-placeholder">
+			<form name="form_50986093809532a7290ea369ea2dbcaa7d4b890e06" id="form_50986093809532a7290ea369ea2dbcaa7d4b890e06" action="https://conf.researchr.org/eventStarByAjaxConferenceEdition?" accept-charset="UTF-8" method="POST" class="hidden">
+				<input type="hidden" name="form_50986093809532a7290ea369ea2dbcaa7d4b890e06" value="1" />
+				<input type="hidden" name="context" value="icpc-2024" />
+				<input name="fea1229783e32754a71abbbb206e49d2" type="text" value="" class="inputString form-control event-id-input"/>
+				<button style="position: absolute; left: -9999px; width: 1px; height: 1px;" onclick='javascript:serverInvoke("https://conf.researchr.org/eventStarByAjaxConferenceEdition?","eventStarByAjaxConferenceEdition_ia0_9532a7290ea369ea2dbcaa7d4b890e06", [{"name":"context", "value":"icpc-2024"},],"form_50986093809532a7290ea369ea2dbcaa7d4b890e06", this.nextSibling, false,"event-star-form"); return false;'></button>
+				<a submitid="eventStarByAjaxConferenceEdition_ia0_9532a7290ea369ea2dbcaa7d4b890e06" href="javascript:void(0)" onclick="javascript:loadImageElem=this;$(this.previousSibling).click()" id="star-event-action"></a>
+			</form>
+		</div>
+		<div id="event-modals" class="webdsl-placeholder"></div>
+		<script type="text/javascript">(function(){
+			var post_process_function = function(n){ var node=(n&&n.nodeType === 1)?n:document; addEventModalLoadOnClick(node); addStarredEventOnClick(node); };
+			var original_post_process_func = ajax_post_process;
+			ajax_post_process = function(){
+				original_post_process_func.apply(this,arguments);
+				post_process_function.apply(this,arguments);
+			};
+			$(document).ready( post_process_function );
+		})();   
+	</script>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-box">
+				<div class="row">
+					<div class="col-sm-3">
+						<h3>
+							<a href="https://conf.researchr.org/home/ase-2024" class="navigate">
+								<span class="glyphicon glyphicon-home"></span> ASE 2024
+							</a>
+						</h3>
+						<div>
+							<a href="https://conf.researchr.org/contact/ase-2024" class="navigate">
+								<span class="glyphicon glyphicon-envelope"></span> contact form
+							</a>
+						</div>
+						<hr>using 
+						<a href="https://conf.researchr.org" class="navigate">conf.researchr.org</a> (
+						<a href="http://yellowgrass.org/roadmap/conf.researchr.org" class="navigate">v1.63.0</a>)
+						<br>
+						<small>
+							<a href="https://conf.researchr.org/support/ase-2024" target="_blank" class="navigate">
+								<span class="glyphicon glyphicon-question-sign"></span> Support page
+							</a>
+						</small>
+						<br>
+						<small></small>
+					</div>
+					<div class="col-sm-5">
+						<div class="row">
+							<div class="col-sm-6">
+								<h4>Tracks</h4>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-research" class="navigate">Research Papers</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-industry-showcase" class="navigate">Industry Showcase</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-journal-first-papers" class="navigate">Journal-first Papers</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-artifact-evaluation-track" class="navigate">Artifact Evaluation Track</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-tool-demonstrations" class="navigate">Tool Demonstrations</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-nier-track" class="navigate">NIER Track</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-student-research-competition-" class="navigate">Student Research Competition </a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-most-influential-papers--mip-" class="navigate">Most Influential Papers (MIP)</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-doctoral-symposium" class="navigate">Doctoral Symposium</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-new-faculty-symposium" class="navigate">New Faculty Symposium</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-tutorials" class="navigate">Tutorials</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-workshops" class="navigate">Workshops</a>
+								<br>
+								<a href="https://conf.researchr.org/track/ase-2024/ase-2024-keynotes" class="navigate">Keynotes</a>
+							</div>
+							<div class="col-sm-6"></div>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<h4>Attending</h4>
+						<a href="https://conf.researchr.org/venue/ase-2024/ase-2024-venue" class="navigate">Venue: Sheraton Grand, Sacramento, California</a>
+						<br>
+						<a href="https://conf.researchr.org/attending/ase-2024/accommodation" class="navigate">Accommodations</a>
+						<br>
+						<a href="https://conf.researchr.org/attending/ase-2024/diversity_inclusion" class="navigate">Diversity and Inclusion Plan</a>
+						<br>
+						<a href="https://conf.researchr.org/attending/ase-2024/code_of_conduct" class="navigate">Code of Conduct</a>
+						<br>
+						<a href="https://conf.researchr.org/attending/ase-2024/travel-support" class="navigate">Travel Support</a>
+						<br>
+						<a href="https://conf.researchr.org/attending/ase-2024/social-events" class="navigate">Social Events</a>
+					</div>
+					<div class="col-sm-2">
+						<a href="https://conf.researchr.org/signup/ase-2024" class="navigate">Sign Up</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<script type="text/javascript">(function(){
+	var post_process_function = function(n){ var node=(n&&n.nodeType === 1)?n:document; $(node).find('[title]').tooltip({placement: function(tt, elem){ return $(document).scrollLeft() > 100 ? 'auto left' : 'auto top' }, container: 'body', sanitize: false}); $('.tooltip.fade.in, .ui-tooltip-content').remove(); };
+	var original_post_process_func = ajax_post_process;
+	ajax_post_process = function(){
+		original_post_process_func.apply(this,arguments);
+		post_process_function.apply(this,arguments);
+	};
+	$(document).ready( post_process_function );
+})();   
+</script>
+<script type="text/javascript">jQuery(document).ready(function($) {
+	$(".clickable-row").click(function() {
+		var href = $(this).attr("href");
+		if( window.location.href.indexOf( href ) < 0 ){
+			if ($(this).hasClass('new-window') ){
+				window.open( href );
+			} else {
+				window.document.location = href;
+			}
+		}
+	});
+});
+
+</script>
+</body>
+</html>
